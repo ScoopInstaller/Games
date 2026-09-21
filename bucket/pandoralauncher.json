@@ -46,7 +46,7 @@
     },
     "checkver": {
         "github": "https://github.com/Moulberry/PandoraLauncher"
-    }, 
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
