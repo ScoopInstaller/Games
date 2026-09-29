@@ -31,6 +31,7 @@
         "app\\config\\db",
         "app\\config\\web",
         "app\\config\\config.json",
+        ["app\\frontend\\static\\assets\\images\\auth\\custom", "auth_custom_images"],
         "backups",
         "import",
         "logs",
