@@ -15,6 +15,7 @@
             "SCSKiller"
         ]
     ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\data\\migrated\")) { New-Item -Path \"$dir\\data\\migrated\" -ItemType File -Force | Out-Null }",
     "persist": "data",
     "checkver": "github",
     "autoupdate": {
