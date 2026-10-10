@@ -1,6 +1,6 @@
 {
     "version": "1.2.4",
-    "description": "Kill shader compilation stutter before you play.",
+    "description": "Kill shader compilation stutter before you play",
     "homepage": "https://github.com/BlueHeisenberg/SCSKiller",
     "license": "GPL-3.0-only",
     "architecture": {
