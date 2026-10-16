@@ -42,9 +42,8 @@
         "}"
     ],
     "persist": [
-        "memstick",
-        "assets",
-        "demos"
+        "demos",
+        "memstick"
     ],
     "checkver": {
         "url": "https://builds.ppsspp.org/meta/history.json",
