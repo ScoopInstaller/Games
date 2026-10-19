@@ -1,6 +1,6 @@
 {
     "version": "0.21.1",
-    "description": "A free and open-source replacement for the Epic Games Launcher",
+    "description": "Free and open-source replacement for the Epic Games Launcher",
     "homepage": "https://github.com/derrod/legendary",
     "license": "GPL-3.0-or-later",
     "notes": "See https://github.com/derrod/legendary/blob/master/README.md for usage instructions.",
