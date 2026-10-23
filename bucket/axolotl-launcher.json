@@ -14,12 +14,12 @@
     },
     "extract_dir": "Axolotl",
     "pre_install": [
-        "$sourceDir = "$env:APPDATA\red.ghs.axolotl"",
-        "$targetDir = "$persist_dir\red.ghs.axolotl"",
+        "$sourceDir = \"$env:APPDATA\\red.ghs.axolotl\"",
+        "$targetDir = \"$persist_dir\\red.ghs.axolotl\"",
         "if (!(Test-Path $targetDir) -and (Test-Path $sourceDir)) {",
         "    if (Get-Process -Name 'Axolotl Launcher' -ErrorAction SilentlyContinue) { throw 'Close Axolotl Launcher before migrating its data' }",
-        "    $stagingDir = "$targetDir.migration"",
-        "    info "Copying existing '$sourceDir' data to '$targetDir'"",
+        "    $stagingDir = \"$targetDir.migration\"",
+        "    info \"Copying existing '$sourceDir' data to '$targetDir'\"",
         "    try {",
         "        ensure $persist_dir | Out-Null",
         "        if (Test-Path $stagingDir) { Remove-Item $stagingDir -Recurse -Force -ErrorAction Stop }",
@@ -30,7 +30,7 @@
         "        throw",
         "    }",
         "}",
-        "Remove-Item "$dir\.Axolotl" -Recurse -Force"
+        "Remove-Item \"$dir\\.Axolotl\" -Recurse -Force"
     ],
     "bin": [
         [
