@@ -1,0 +1,43 @@
+{
+    "version": "0.5.6",
+    "description": "Open source engine for the golf course building game SimGolf, with its own free graphics and sounds",
+    "homepage": "https://github.com/crspytopgn/opensgolf",
+    "license": "GPL-2.0-or-later",
+    "notes": "Saves and settings are in %APPDATA%\\OpenSGolf. Update with 'scoop update opensgolf' rather than the game's own Update now, so that Scoop knows the version installed.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/crspytopgn/opensgolf/releases/download/v0.5.6/opensgolf-windows.zip",
+            "hash": "b9d05ba761021c7088ff4366511ed6504590142fe4e27b7990f3e582a175d707",
+            "extract_dir": "opensgolf-windows"
+        },
+        "arm64": {
+            "url": "https://github.com/crspytopgn/opensgolf/releases/download/v0.5.6/opensgolf-windows-arm64.zip",
+            "hash": "696b0c958384ca78192cabc4b6ba6112fc9b3970812a248526f809e53e3512ee",
+            "extract_dir": "opensgolf-windows-arm64"
+        }
+    },
+    "bin": "opensgolf.exe",
+    "shortcuts": [
+        [
+            "opensgolf.exe",
+            "OpenSGolf"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/crspytopgn/opensgolf/releases/download/v$version/opensgolf-windows.zip",
+                "extract_dir": "opensgolf-windows"
+            },
+            "arm64": {
+                "url": "https://github.com/crspytopgn/opensgolf/releases/download/v$version/opensgolf-windows-arm64.zip",
+                "extract_dir": "opensgolf-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
