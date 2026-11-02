@@ -25,9 +25,22 @@
         "WWMI",
         "ZZMI",
         [
-            "XXMI Launcher Config.json",
-            "XXMI.json"
+            "Backups",
+            "XXMI/Backups"
+        ],
+        [
+            "Resources/Packages",
+            "XXMI/Packages"
+        ],
+        [
+            "Themes",
+            "XXMI/Themes"
         ]
+    ],
+    "post_install": [
+        "$f=\"$dir/Backups/XXMI Launcher Config.json\"",
+        "$g=\"$dir/XXMI Launcher Config.json\"",
+        "if ((Test-Path $f) -and !(Test-Path $g)) { cp $f $g }"
     ],
     "checkver": {
         "github": "https://github.com/SpectrumQT/XXMI-Launcher"
