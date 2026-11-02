@@ -1,5 +1,5 @@
 {
-    "version": "1.10.0-beta.5",
+    "version": "1.11.0-beta.1",
     "description": "Free and open-source Minecraft Java Edition launcher with Modrinth and CurseForge integration (beta channel)",
     "homepage": "https://axlmc.org",
     "license": "GPL-3.0-only",
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Axolotl-Launcher/Axolotl/releases/download/v1.10.0-beta.5/Axolotl_Launcher_1.10.0-beta.5_x64_portable.zip",
-            "hash": "a233c12fbb1e38bf8efa8adbeb0c7849dd7707e3985b699d8726dff0dd475325"
+            "url": "https://github.com/Axolotl-Launcher/Axolotl/releases/download/v1.11.0-beta.1/Axolotl_Launcher_1.11.0-beta.1_x64_portable.zip",
+            "hash": "fce9603f0246fce8955c44fd4ac51b5f32c06a256449d9309fca25cfd8917abb"
         }
     },
     "extract_dir": "Axolotl",
