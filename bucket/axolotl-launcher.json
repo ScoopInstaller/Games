@@ -9,7 +9,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Axolotl-Launcher/Axolotl/releases/download/v1.10.5/Axolotl_Launcher_1.10.5_x64_portable.zip",
-            "hash": "66f8acac2c903b63f5e74e2a434e658705350baa905bd163fe07d675def65e92"
+            "hash": "9446967449cbf8f5942b037131e96785a85bd974fd5feddf6bea2200ed876e48"
         }
     },
     "extract_dir": "Axolotl",
