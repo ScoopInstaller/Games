@@ -1,5 +1,5 @@
 {
-    "version": "0.0.43-20559",
+    "version": "0.0.43-20560",
     "description": "Open-source Sony PlayStation 3 emulator",
     "homepage": "https://rpcs3.net/",
     "license": {
@@ -17,12 +17,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-a2c2ca2fac39e4e2c45f99073848fc48696db7e3/rpcs3-v0.0.43-20559-a2c2ca2f_win64_msvc.7z",
-            "hash": "c6b6443d93c772f9f5c2dac15cf429dca8b1f92f8ac122c8d726127406cec092"
+            "url": "https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-63996a47115563e433b909f2afc62d264e4b1314/rpcs3-v0.0.43-20560-63996a47_win64_msvc.7z",
+            "hash": "bb4cc34c20ceef6d568769bfe5b3578341e47f806cc3e665d242666b60bc0917"
         },
         "arm64": {
-            "url": "https://github.com/RPCS3/rpcs3-binaries-win-arm64/releases/download/build-a2c2ca2fac39e4e2c45f99073848fc48696db7e3/rpcs3-v0.0.43-20559-a2c2ca2f_win64_aarch64_clang.7z",
-            "hash": "60938d61a697eeda801244b6875321863a21eea775342faa10efe2cb2f6165da"
+            "url": "https://github.com/RPCS3/rpcs3-binaries-win-arm64/releases/download/build-63996a47115563e433b909f2afc62d264e4b1314/rpcs3-v0.0.43-20560-63996a47_win64_aarch64_clang.7z",
+            "hash": "c4677586ac7cc657159ccc6b510a295aa84c2c4d1072cc7da23462ab7f755d6c"
         }
     },
     "pre_install": [
