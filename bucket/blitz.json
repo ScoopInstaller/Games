@@ -1,12 +1,12 @@
 {
-    "version": "3.0.18",
+    "version": "3.0.19",
     "description": "Personalized stats and insights powered by billions of matches",
     "homepage": "https://blitz.gg",
     "license": "Proprietary",
     "architecture": {
         "64bit": {
-            "url": "https://blitz-main.blitz.gg/Blitz-3.0.18.exe#/dl.7z",
-            "hash": "9849f858a027f9a3331c7c6dc998dea08d062c4fda027c2e17ac793863703159"
+            "url": "https://blitz-main.blitz.gg/Blitz-3.0.19.exe#/dl.7z",
+            "hash": "18b3ec8ffe6d82d4cc60e5dc7cd9f28f04fa9baf505692044e10456dd79a3b8f"
         }
     },
     "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
