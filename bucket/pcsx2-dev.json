@@ -3,13 +3,13 @@
     "description": "A feature rich FOSS PlayStation 2 emulator (development version)",
     "homepage": "https://pcsx2.net/",
     "license": {
-        "identifier": "GPL-3.0",
+        "identifier": "GPL-3.0-or-later",
         "url": "https://github.com/PCSX2/pcsx2/blob/master/COPYING.GPLv3"
     },
     "notes": [
         "ATTENTION: PCSX2 requires a dump of the PS2 BIOS to function.",
         "Place the BIOS file in $persist_dir\\bios",
-        "Learn more at https://wiki.pcsx2.net/Setting_up_Windows_version#BIOS"
+        "Learn more at https://pcsx2.net/docs/setup/bios"
     ],
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
@@ -24,17 +24,17 @@
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
         "   if (Test-Path \"$env:USERPROFILE\\Documents\\PCSX2\") {",
-        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Write-Host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       New-Item \"$persist_dir\\inis\\PCSX2.ini\" -Force -Value (((Get-Content \"$persist_dir\\inis\\PCSX2.ini\" -Encoding utf8) -notmatch '^CheckAtStartup') + '[AutoUpdater]', 'CheckAtStartup = false' | Out-String) | Out-Null",
         "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\" -Recurse",
-        "   }",
-        "   if (!(Test-Path \"$persist_dir\\inis\\PCSX2.ini\")) {",
-        "       New-item \"$persist_dir\\inis\" -ItemType Directory | Out-Null",
-        "       '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$persist_dir\\inis\\PCSX2.ini\"",
+        "   } else {",
+        "       New-Item \"$persist_dir\\inis\" -ItemType Directory | Out-Null",
+        "       '[UI]', 'SettingsVersion = 1', 'SetupWizardIncomplete = true', '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$persist_dir\\inis\\PCSX2.ini\"",
         "   }",
         "}"
     ],
-    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.ini\"",
+    "post_install": "New-Item \"$dir\\portable.ini\" -ItemType File | Out-Null",
     "bin": [
         [
             "pcsx2-qt.exe",
@@ -44,12 +44,12 @@
     "shortcuts": [
         [
             "pcsx2-qt.exe",
-            "PCSX2 (dev)"
+            "PCSX2 (Development)"
         ]
     ],
     "persist": [
         "bios",
-        "cheats_ws",
+        "cache",
         "cheats",
         "covers",
         "gamesettings",
@@ -57,12 +57,14 @@
         "inputprofiles",
         "logs",
         "memcards",
+        "patches",
         "snaps",
         "sstates",
-        "textures"
+        "textures",
+        "videos"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/PCSX2/pcsx2/releases?per_page=1",
+        "github": "https://api.github.com/repos/PCSX2/pcsx2/releases",
         "jsonpath": "$[?(@.prerelease == true)].tag_name",
         "regex": "v([\\d.]+)"
     },
