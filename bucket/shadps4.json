@@ -1,5 +1,5 @@
 {
-    "version": "224",
+    "version": "20261106064855-ecc8507",
     "description": "PlayStation 4 emulator",
     "homepage": "https://shadps4.net/",
     "license": {
@@ -11,14 +11,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/v224/shadPS4QtLauncher-win64-qt-v224.zip",
-            "hash": "021871249bae6867900f62efd728a6cbdbed9934b69c28488b41d413280e2e1d"
+            "url": "https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-2026-11-06-ecc85072dae45c05628934fdb6b3aa036e9f1d4b/shadPS4QtLauncher-win64-qt-2026-11-06-ecc8507.zip",
+            "hash": "eeb6498aa29d62c5f9ee2469884f6538a0a4d299cdfb6b1f48b03e17534debd9"
         }
     },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "    New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
         "    $map = @{ 'shadPS4' = 'user'; 'shadPS4QtLauncher' = 'launcher' }",
+        "    $paths = @{ 'shadPS4' = 'addcont'; 'shadPS4QtLauncher' = 'versions' }",
         "    $found = $map.Keys.Where({ Test-Path \"$env:APPDATA\\$_\" })",
         "    if ($found) {",
         "        Write-Host 'Migrating AppData...' -ForegroundColor Yellow",
@@ -27,27 +28,14 @@
         "            New-Item $dest -ItemType Directory | Out-Null",
         "            Copy-Item -Path \"$env:APPDATA\\$folder\\*\" -Destination $dest -Recurse",
         "            Remove-Item -Path \"$env:APPDATA\\$folder\" -Recurse",
+        "            # The files store paths both with escaped backslashes and with forward slashes",
+        "            $from, $to = \"$env:APPDATA\\$folder\\$($paths[$folder])\", \"$(Split-Path $dir)\\current\\$($map[$folder])\\$($paths[$folder])\"",
+        "            Get-ChildItem \"$dest\\*\" -Include config.json, qt_ui.ini, versions.json | ForEach-Object {",
+        "                (Get-Content -Path $_.FullName -Encoding UTF8).Replace($from.Replace('\\', '\\\\'), $to.Replace('\\', '\\\\')).Replace($from.Replace('\\', '/'), $to.Replace('\\', '/')) | Set-Content -Path $_.FullName -Encoding UTF8",
+        "            }",
         "        }",
+        "        (Get-Content -Path \"$persist_dir\\launcher\\qt_ui.ini\" -Encoding UTF8).Replace('checkForUpdates=true', 'checkForUpdates=false') | Set-Content -Path \"$persist_dir\\launcher\\qt_ui.ini\" -Encoding UTF8",
         "    }",
-        "}"
-    ],
-    "post_install": [
-        "if (Test-Path \"$persist_dir\\user\\config.toml\") {",
-        "    $oldAddonDir = ($env:APPDATA + '\\shadPS4\\addcont').Replace('\\', '\\\\')",
-        "    $newAddonDir = ($dir + '\\user\\addcont').Replace('\\', '\\\\')",
-        "    (Get-Content \"$persist_dir\\user\\config.toml\").Replace($oldAddonDir, $newAddonDir) | Set-Content \"$persist_dir\\user\\config.toml\"",
-        "}",
-        "if (Test-Path \"$persist_dir\\launcher\\qt_ui.ini\") {",
-        "    $oldVersionPath = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '\\\\')",
-        "    $newVersionPath = ($dir + '\\launcher\\versions').Replace('\\', '\\\\')",
-        "    $oldVersionSel = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '/')",
-        "    $newVersionSel = ($dir + '\\launcher\\versions').Replace('\\', '/')",
-        "    (Get-Content \"$persist_dir\\launcher\\qt_ui.ini\").Replace($oldVersionPath, $newVersionPath).Replace($oldVersionSel, $newVersionSel) | Set-Content \"$persist_dir\\launcher\\qt_ui.ini\"",
-        "}",
-        "if (Test-Path \"$persist_dir\\launcher\\versions.json\") {",
-        "    $oldPath = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '/')",
-        "    $newPath = ($dir + '\\launcher\\versions').Replace('\\', '/')",
-        "    (Get-Content \"$persist_dir\\launcher\\versions.json\").Replace($oldPath, $newPath) | Set-Content \"$persist_dir\\launcher\\versions.json\"",
         "}"
     ],
     "bin": [
@@ -67,12 +55,19 @@
         "user"
     ],
     "checkver": {
-        "github": "https://github.com/shadps4-emu/shadps4-qtlauncher"
+        "github": "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases",
+        "script": [
+            "$release = (ConvertFrom-Json $page)[0]",
+            "$time = ([datetime]$release.published_at).ToUniversalTime().ToString('yyyyMMddHHmmss')",
+            "Write-Output \"$time $($release.tag_name) $($release.name)\""
+        ],
+        "regex": "(?<time>\\d{14}) (?<tag>\\S+) shadPS4QtLauncher-(?<build>[\\d-]+-(?<commit>[a-f\\d]+))",
+        "replace": "${time}-${commit}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/v$version/shadPS4QtLauncher-win64-qt-v$version.zip"
+                "url": "https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/$matchTag/shadPS4QtLauncher-win64-qt-$matchBuild.zip"
             }
         }
     }
