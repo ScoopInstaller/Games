@@ -1,12 +1,12 @@
 {
-    "version": "4.2.6-258-ge473720ed",
+    "version": "4.2.6-280-g574b618c3",
     "description": "A free single-player dungeon exploration Roguelike (Pre-release)",
     "homepage": "https://rephial.org/",
     "license": "GPL-2.0",
     "notes": "Configuration files cannot be persisted, but will be retained during the update",
-    "url": "https://github.com/angband/angband/releases/download/4.2.6-258-ge473720ed/Angband-4.2.6-258-ge473720ed-win.zip",
-    "hash": "bbf6d9b71ac4d0e5e8f49e05c0d6ec61dd2f969bac225f5a8924165a2da465cf",
-    "extract_dir": "angband-4.2.6-258-ge473720ed",
+    "url": "https://github.com/angband/angband/releases/download/4.2.6-280-g574b618c3/Angband-4.2.6-280-g574b618c3-win.zip",
+    "hash": "6c29da8a5d6ba0c2b35e3ad62261b5405d7c812e700c097d36886c1d00977abf",
+    "extract_dir": "angband-4.2.6-280-g574b618c3",
     "post_install": [
         "'angband.INI' | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\$_.bak\")) {",

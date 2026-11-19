@@ -1,5 +1,5 @@
 {
-    "version": "3.0.0-beta.2",
+    "version": "3.2.0-beta.5",
     "description": "High-precision automation assistant. Designed for heavy-duty operations and maximum efficiency in Arknights: Endfield.",
     "homepage": "https://github.com/MaaEnd/MaaEnd",
     "license": "AGPL-3.0",
@@ -15,12 +15,12 @@
     "pre_uninstall": "Start-Process powershell -ArgumentList '-NoProfile -Command Stop-Process -Name \"MaaEnd\" -Force' -Verb RunAs -WindowStyle Hidden",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/MaaEnd/MaaEnd/releases/download/v3.0.0-beta.2/MaaEnd-win-x86_64-v3.0.0-beta.2.zip",
-            "hash": "7469afe59389cb8fa6b9a449bfcf851a7be4b12424fe3d765f667614d5804a7c"
+            "url": "https://github.com/MaaEnd/MaaEnd/releases/download/v3.2.0-beta.5/MaaEnd-win-x86_64-v3.2.0-beta.5.zip",
+            "hash": "eef75405168aba7e812cb70b28155c10910f63f1918b754f6179856739148c1d"
         },
         "arm64": {
-            "url": "https://github.com/MaaEnd/MaaEnd/releases/download/v3.0.0-beta.2/MaaEnd-win-aarch64-v3.0.0-beta.2.zip",
-            "hash": "d7072fbd49cae4d6885bc9f26cbafc248d597197fd03a99913b6f0dccac1cf83"
+            "url": "https://github.com/MaaEnd/MaaEnd/releases/download/v3.2.0-beta.5/MaaEnd-win-aarch64-v3.2.0-beta.5.zip",
+            "hash": "062513bca0620289737b71309fc39a9e968f8d84de41d9cebcf83a69c05894e8"
         }
     },
     "bin": "MaaEnd.exe",
