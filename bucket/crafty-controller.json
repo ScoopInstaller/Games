@@ -5,7 +5,8 @@
     "license": "GPL-3.0-or-later",
     "notes": [
         "The Crafty team doesn't support this method of installation.",
-        "Use one of the official methods listed in https://docs.craftycontrol.com/pages/getting-started/installation/windows/ if you want to get support."
+        "Use one of the official methods listed in https://docs.craftycontrol.com/pages/getting-started/installation/windows/ if you want to get support.",
+        "Global Servers Directory should be set to $persist_dir\\servers"
     ],
     "architecture": {
         "64bit": {
@@ -30,6 +31,7 @@
         "app\\config\\db",
         "app\\config\\web",
         "app\\config\\config.json",
+        ["app\\frontend\\static\\assets\\images\\auth\\custom", "auth_custom_images"],
         "backups",
         "import",
         "logs",
