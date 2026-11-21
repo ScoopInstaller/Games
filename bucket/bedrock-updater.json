@@ -1,0 +1,27 @@
+{
+    "version": "3.5.0",
+    "description": "Download, update & install Minecraft: Bedrock Edition without the Microsoft Store",
+    "homepage": "https://github.com/Aetopia/bedrock-updater",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/Aetopia/bedrock-updater/releases/download/v3.5.0/Bedrock.Updater.exe",
+    "hash": "0504267de9f8d9580f5eff82d2041b4e8a04be861f8007d46df810eed1abdfaa",
+    "shortcuts": [
+        [
+            "Bedrock.Updater.exe",
+            "Bedrock Updater"
+        ],
+        [
+            "Bedrock.Updater.exe",
+            "Bedrock Updater Preview",
+            "/Preview"
+        ]
+    ],
+    "notes": [
+        "To uninstall Minecraft: Bedrock Edition, run the following command in Windows PowerShell:",
+        "Get-AppxPackage | ForEach-Object { if ($_.Name -in @(\"Microsoft.MinecraftUWP\", \"Microsoft.MinecraftWindowsBeta\")) { Remove-AppxPackage $_ } }"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/Aetopia/bedrock-updater/releases/download/v$version/Bedrock.Updater.exe"
+    }
+}
