@@ -1,16 +1,16 @@
 {
-    "version": "12.6.21",
+    "version": "12.6.22",
     "description": "A fast, reliable homebrew and game uploader for jailbroken PS5s",
     "homepage": "https://github.com/phantomptr/ps5upload",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.21/PS5Upload-12.6.21-win-x64.zip",
-            "hash": "bd1a52b32da653f6d68efe3a2f93bcdf73d4959b19f663dbfe58b68bb825cb6f"
+            "url": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.22/PS5Upload-12.6.22-win-x64.zip",
+            "hash": "a7cadd5d85ca113d49e1631907a16241126587a810723d9a8dc72d97590ac77c"
         },
         "arm64": {
-            "url": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.21/PS5Upload-12.6.21-win-arm64.zip",
-            "hash": "f1d76ffb908e845f84f57c95c0d972c79bbd3b0a1c1cde877992e950e5772cba"
+            "url": "https://github.com/phantomptr/ps5upload/releases/download/v12.6.22/PS5Upload-12.6.22-win-arm64.zip",
+            "hash": "eecf2b6d3f82c32ed9d2aa587b90fbe81a84364cefb4280d9f31f231ba1ae08f"
         }
     },
     "shortcuts": [
