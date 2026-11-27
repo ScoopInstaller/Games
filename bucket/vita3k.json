@@ -16,11 +16,11 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip",
-            "hash": "5070655d0b73f66373254375e85fb36299c0db8100540913a5cf76f642fce1b1"
+            "hash": "de761024fcad45307b64b4f2e3e1f9ce52c002f936eab9f2d9eb2e4632101f50"
         },
         "arm64": {
             "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-arm64-latest.zip",
-            "hash": "fa8681b3373fb72d94d52a72f9081ef5f245f74ff9f8685cfeadfedb84d6260b"
+            "hash": "1f48bdb02656d4bbcfef00d6860e054bc4075753f4212e4ee903171529c0a777"
         }
     },
     "pre_install": [
