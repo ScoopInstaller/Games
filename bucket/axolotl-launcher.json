@@ -8,7 +8,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Mystic-Stars/Axolotl/releases/download/v1.11.1/Axolotl_Launcher_1.11.1_x64_portable.zip",
+            "url": "https://github.com/Axolotl-Launcher/Axolotl/releases/download/v1.11.1/Axolotl_Launcher_1.11.1_x64_portable.zip",
             "hash": "953752dc5d6a0381236578b919607ded28eb6d502066160c4b1dfc03650692fb"
         }
     },
@@ -51,12 +51,12 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/Mystic-Stars/Axolotl"
+        "github": "https://github.com/Axolotl-Launcher/Axolotl"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Mystic-Stars/Axolotl/releases/download/v$version/Axolotl_Launcher_$version_x64_portable.zip"
+                "url": "https://github.com/Axolotl-Launcher/Axolotl/releases/download/v$version/Axolotl_Launcher_$version_x64_portable.zip"
             }
         }
     }
