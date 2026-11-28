@@ -1,57 +1,30 @@
 {
-    "version": "v10.0.0",
-    "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability with MeshMC Module Component Object Protocol",
+    "version": "12.0",
+    "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods.",
     "homepage": "https://projecttick.org/",
-    "license": "Apache-2.0",
-    "notes": [
-        "To add MeshMC file association options for .ZIPs and .MRPACKS, run this:",
-        "reg import \"$dir\\install-associations.reg\""
-    ],
-    "suggest": {
-        "Microsoft Visual C++ Redistributables": "extras/vcredist2022"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Project-Tick/MeshMC/releases/download/v10.0.0/MeshMC-Windows-MSVC-Portable-v10.0.0.zip",
-            "hash": "32ebeda343a8b72322e5f15349f3380755febc7e85043ffdc5a30c22a431e3f6"
-        },
-        "arm64": {
-            "url": "https://github.com/Project-Tick/MeshMC/releases/download/v10.0.0/MeshMC-Windows-MSVC-arm64-Portable-v10.0.0.zip",
-            "hash": "1efa01e433fde2076fe35e825ca1cfeb3a385ae9c103696a521e322159939103"
-        }
-    },
+    "license": "Apache-2.0,MS-PL",
+    "url": "https://github.com/Project-Tick/MeshMC-Archive/releases/download/build-22/MeshMC-build-22-win32.zip",
+    "hash": "180e65d65102305c43bc08531bf0cac9547a0f98b39171352396107919e0e094",
+    "extract_dir": "MeshMC",
     "pre_install": [
-        "$visibleUserAccounts = Get-LocalUser | Where-Object { $_.Enabled -eq $true }",
-        "if ($global -and $visibleUserAccounts.Count -gt 1) { $migration = $false }",
-        "",
-        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "New-Item -Path \"$dir\\portable.txt\" -ItemType File -Force | Out-Null",
         "$contents = @{",
+        "    'accounts.json' = '{}'",
         "    'metacache' = '{}'",
+        "    'meshmc.cfg' = ''",
         "}",
         "'accounts.json', 'metacache', 'meshmc.cfg' | ForEach-Object {",
         "    if (Test-Path \"$persist_dir\\$_\") {",
         "        Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -Force",
-        "    } else {",
-        "        Set-Content -Path \"$dir\\$_\" -Value $contents[$_]",
-        "    }",
-        "}",
-        "Remove-Item -Path \"$dir\\meshmc-updater.exe\" -Force -ErrorAction Ignore"
-    ],
-    "post_install": [
-        "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\games\\scripts\\meshmc\\$_.reg\") {",
-        "        $exePath = \"$dir\\meshmc.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\games\\scripts\\meshmc\\$_.reg\").Replace('$EXEPATH', $exePath)",
-        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
-        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    } elseif (!(Test-Path \"$dir\\$_\")) {",
+        "        Set-Content -Path \"$dir\\$_\" -Value $contents[$_] -Encoding Ascii",
         "    }",
         "}"
     ],
-    "bin": "meshmc.exe",
+    "bin": "MeshMC.exe",
     "shortcuts": [
         [
-            "meshmc.exe",
+            "MeshMC.exe",
             "MeshMC"
         ]
     ],
@@ -79,20 +52,6 @@
         "    if (Test-Path -Path \"$dir\\$_\") {",
         "        Copy-Item -Path \"$dir\\$_\" -Destination \"$persist_dir\\$_\" -Force",
         "    }",
-        "}",
-        "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
-    ],
-    "checkver": {
-        "github": "https://github.com/Project-Tick/MeshMC"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Project-Tick/MeshMC/releases/download/$version/MeshMC-Windows-MSVC-Portable-$version.zip"
-            },
-            "arm64": {
-                "url": "https://github.com/Project-Tick/MeshMC/releases/download/$version/MeshMC-Windows-MSVC-arm64-Portable-$version.zip"
-            }
-        }
-    }
+        "}"
+    ]
 }
